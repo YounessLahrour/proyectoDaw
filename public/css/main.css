@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body{
+   background-color: #d7dce6;
+}
+
+.wrapper{
+  display: flex;
+  position: relative;
+}
+
+
+ 
+
+
+.wrapper .main_content{
+  width: 100%;
+  margin-left: 5px;
+  padding: 10px;
+}
+
+.wrapper .main_content .header{
+  padding: 15px;
+  background: #fff;
+  margin-left: -10px;
+  text-align: right;
+  color: #717171;
+  border-bottom: 1px solid #e0e4e8;
+}
+.wrapper .main_content .header div{
+    display:inline-block;
+
+  }
+  .box.first {
+    font-size: xx-large;
+    font-weight: bold;
+    float: left;
+  }
+
+
+.wrapper .main_content .info{
+  margin: 0px;
+  color: #717171;
+  line-height: 25px;
+  
+}
+
+.wrapper .main_content .info div{
+  margin-bottom: 20px;
+  position: relative;
+  margin-left: -30px;
+}
+
+
+.content-menu{
+    width: 100px;
+    height: auto 0;
+    background: #161616;
+    transition: all 300ms;
+}
+
+.content-menu2{
+    margin-left: -100px;
+}
+
+.content-menu li{
+    list-style: none;
+    text-align: center;
+    padding: 10px;
+    color: white;
+    transition: all 300ms;
+    cursor: pointer;
+}
+
+.content-menu li:hover{
+    transform: translateY(10px);
+    background: rgba(0,0,0,0.5);
+}
+
+.content-menu li span{
+    font-size: 40px;
+}
+
+.content-menu li h4{
+    font-weight: 30;
+    font-size: 14px;
+    transform: translateY(18px) translateX(-110px);
+    transition: all 300ms;
+    
+}
+
+.icon1{
+    color: rgb(255, 255, 255);
+}
+
+.icon2{
+    color: rgb(255, 255, 255);
+}
+
+
+.icon3{
+    color: rgb(255, 255, 255);
+}
+
+
+.icon4{
+    color: rgb(255, 255, 255);
+}
+
+
+.icon5{
+    color: rgb(255, 255, 255);
+}
+
+
+.icon6{
+    color: rgb(255, 255, 255);
+}
+
+
+.icon7{
+    color: rgb(236, 14, 14);
+}
+
+
+.icon8{
+    color: #F9E11B;
+}
+
+
+.icon9{
+    color: #fff;
+}
+
+.content-menu:hover .text1{
+    transform: translateX(0px);
+    transition: all 100ms;
+}
+
+.content-menu:hover .text2{
+    transform: translateX(0px);
+    transition: all 200ms;
+}
+
+
+.content-menu:hover .text3{
+    transform: translateX(0px);
+    transition: all 300ms;
+}
+
+
+.content-menu:hover .text4{
+    transform: translateX(0px);
+    transition: all 400ms;
+}
+
+
+.content-menu:hover .text5{
+    transform: translateX(0px);
+    transition: all 500ms;
+}
+
+
+.content-menu:hover .text6{
+    transform: translateX(0px);
+    transition: all 600ms;
+}
+
+
+.content-menu:hover .text7{
+    transform: translateX(0px);
+    transition: all 700ms;
+}
+
+
+.content-menu:hover .text8{
+    transform: translateX(0px);
+    transition: all 800ms;
+}
+
+
+.content-menu:hover .text9{
+    transform: translateX(0px);
+    transition: all 900ms;
+}
+
+
+article{
+    padding: 20px;
+}
+
+h1{
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+article p{
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+#menu{
+    text-align: initial;
+}
+
+.lnr-menu{
+    padding: 5px;
+}
+.form{
+    border: rgb(238, 236, 234);
+    border-radius: 6px;
+    background: #2b2828;
+    padding: 20px;
+    color: white;
+}
+form{
+    margin-left: 70px;
+}
+.seleccionado{
+    color: #fff;
+    background-color: #53585c;
+    border-color: #505458;
+}
+
+table td{
+    text-align: center;
+
+}
+table th{
+    text-align: center;
+}
+
