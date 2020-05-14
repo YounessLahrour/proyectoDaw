@@ -100,7 +100,8 @@ class RegisterController extends Controller
             $empleado->foto = "img/$nombre1";
             $empleado->save();
             return User::create([
-                'name' => $data['name'] . " " . $data['apellido'],
+                'name' => $data['name'],
+                'apellido'=>$data['apellido'],
                 'dni' => $data['dni'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
@@ -110,7 +111,8 @@ class RegisterController extends Controller
 
             $empleado->save();
             return User::create([
-                'name' => $data['name'] . " " . $data['apellido'],
+                'name' => $data['name'] ,
+                'apellido'=>$data['apellido'],
                 'dni' => $data['dni'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),

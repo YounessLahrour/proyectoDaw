@@ -20,9 +20,11 @@
 
     @else
     <div class="content-menu">
+    <a href="{{route('perfil')}}">
       <li><span class="icon8"></span>
-        <h4 class="text8"></h4><img src="./img/empleados/youness.jpg" width="50px" height="50px" class="rounded-circle">
+        <h4 class="text8"></h4><img src="{{asset(Auth::user()->avatar)}}" width="50px" height="50px" class="rounded-circle">
       </li>
+      </a>
       <a href="{{route('home')}}">
         <li><span class="lnr lnr-home icon1"></span>
           <h4 class="text1">Inicio</h4>
@@ -54,10 +56,11 @@
         </li>
 
       </a>
-
+      <a href="{{route('password')}}">
       <li><span class="lnr lnr-cog icon6"></span>
         <h4 class="text6">Configuración</h4>
       </li>
+      </a>
       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
       </form>
@@ -72,7 +75,7 @@
     <div class="main_content">
       <div class="header ">
 
-        <div class="box ">{{ Auth::user()->name }} <img src="../img/empleados/youness.jpg" width="50px" height="50px" class="rounded-circle"></div>
+        <div class="box ">{{ Auth::user()->name }}, {{ Auth::user()->apellido }} <img src="{{asset(Auth::user()->avatar)}}" width="50px" height="50px" class="rounded-circle"></div>
         <div class="box first">Lahrour S.L</div>
       </div>
       @endguest

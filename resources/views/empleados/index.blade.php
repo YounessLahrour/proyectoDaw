@@ -9,10 +9,7 @@
 @if ($texto=Session::get('mensaje'))
 <p class="alert alert-success my-3">{{$texto}}</p>    
 @endif
-<div class="btn-group mt-2" role="group" aria-label="Basic example">
-<a href="{{route('empleados.index')}}"><button type="button" class="btn btn-primary">Empleados</button></a> 
-    <button type="button" class="btn btn-secondary">Usuarios</button>
-  </div>
+
 <div>
     <form name="search" action="#" method="GET" class="form-inline float-right mb-2 mt-2">
     <i class="fa fa-search ml-2 mr-2" aria-hidden="true"></i>           

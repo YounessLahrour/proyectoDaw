@@ -16,9 +16,6 @@
 </head>
 
 <body>
-    
-    
-
     <div class="container">
         <div class="row justify-content-center pt-5 mt-5 m-1">
             <div class="col-md-8 ">
@@ -131,7 +128,7 @@
                             </div>
                             <div class="form-group row justify-content-center">
                                 <div class="col-md-7 mb-2 ">
-                                    <label for="validationDefault01">Imágen</label>
+                                    <label for="validationDefault01">Imagen</label>
                                     <input type="file" id="foto" class="form-control @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') }}" autocomplete="foto" autofocus>
                                     @error('foto')
                                     <span class="invalid-feedback" role="alert">

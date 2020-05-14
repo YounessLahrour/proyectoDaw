@@ -107,8 +107,8 @@
         }
 
         .media-left img {
-           width: 80px;
-           height: 80px;
+            width: 80px;
+            height: 80px;
         }
 
         .media-body p {
@@ -186,9 +186,11 @@
 
         @else
         <div class="content-menu">
-            <li><span class="icon8"></span>
-                <h4 class="text8"></h4><img src="{{asset(Auth::user()->avatar)}}" width="50px" height="50px" class="rounded-circle">
-            </li>
+            <a href="{{route('perfil')}}">
+                <li><span class="icon8"></span>
+                    <h4 class="text8"></h4><img src="{{asset(Auth::user()->avatar)}}" width="50px" height="50px" class="rounded-circle">
+                </li>
+            </a>
             <a href="{{route('home')}}">
                 <li><span class="lnr lnr-home icon1"></span>
                     <h4 class="text1">Inicio</h4>
@@ -210,22 +212,22 @@
                 </li>
             </a>
             <a href="{{route('notificacion')}}">
-            <li><span class="lnr lnr-envelope icon4"></span>
-                <h4 class="text4">Notificación</h4>
-            </li>
+                <li><span class="lnr lnr-envelope icon4"></span>
+                    <h4 class="text4">Notificación</h4>
+                </li>
             </a>
             <a href="{{route('chat')}}">
                 <li><span class="lnr lnr-bubble icon5"></span>
                     <h4 class="text5">Chat</h4>
                 </li>
-            
+
             </a>
-            
+            <a href="{{route('password')}}">
                 <li><span class="lnr lnr-cog icon6"></span>
-                <h4 class="text6">Configuración</h4>
-            </li>
-            
-            
+                    <h4 class="text6">Configuración</h4>
+                </li>
+            </a>
+
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
@@ -240,7 +242,7 @@
         <div class="main_content">
             <div class="header ">
 
-                <div class="box ">{{ Auth::user()->name }} <img src="{{asset(Auth::user()->avatar)}}" width="50px" height="50px" class="rounded-circle"></div>
+                <div class="box ">{{ Auth::user()->name }}, {{ Auth::user()->apellido }} <img src="{{asset(Auth::user()->avatar)}}" width="50px" height="50px" class="rounded-circle"></div>
                 <div class="box first">Lahrour S.L</div>
             </div>
             <div class="info">
@@ -275,26 +277,26 @@
             });
 
             var channel = pusher.subscribe('my-channel');
-             channel.bind('my-event', function(data) {
-                 // alert(JSON.stringify(data));
-                 if (my_id == data.from) {
-                     $('#' + data.to).click();
-                 } else if (my_id == data.to) {
-                     if (receiver_id == data.from) {
-                         // if receiver is selected, reload the selected user ...
-                         $('#' + data.from).click();
-                     } else {
-                         // if receiver is not seleted, add notification for that user
-                         var pending = parseInt($('#' + data.from).find('.pending').html());
+            channel.bind('my-event', function(data) {
+                // alert(JSON.stringify(data));
+                if (my_id == data.from) {
+                    $('#' + data.to).click();
+                } else if (my_id == data.to) {
+                    if (receiver_id == data.from) {
+                        // if receiver is selected, reload the selected user ...
+                        $('#' + data.from).click();
+                    } else {
+                        // if receiver is not seleted, add notification for that user
+                        var pending = parseInt($('#' + data.from).find('.pending').html());
 
-                         if (pending) {
-                             $('#' + data.from).find('.pending').html(pending + 1);
-                         } else {
-                             $('#' + data.from).append('<span class="pending">1</span>');
-                         }
-                     }
-                 }
-             });
+                        if (pending) {
+                            $('#' + data.from).find('.pending').html(pending + 1);
+                        } else {
+                            $('#' + data.from).append('<span class="pending">1</span>');
+                        }
+                    }
+                }
+            });
 
             $('.user').click(function() {
                 $('.user').removeClass('active');
