@@ -39,7 +39,8 @@ Cambiar password
             </div>
         </div>
 
-        <button class="btn btn-primary" type="submit">Modificar</button>
+        <a href="{{route('home')}}" class="btn btn-primary mr-2">Volver</a>
+        <button class="btn btn-success" type="submit">Modificar</button>
     </form>
 </div>
 @endsection

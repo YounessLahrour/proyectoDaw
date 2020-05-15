@@ -43,8 +43,8 @@
       </div>
     </div>
                 
+    <a href="{{route('clientes.index')}}" class="btn btn-primary mr-2">Volver</a>
     <button class="btn btn-success" type="submit">Modificar</button>
-    <a href="{{route('clientes.index')}}" class="btn btn-info">Volver</a>
   </form>
 </div>
 

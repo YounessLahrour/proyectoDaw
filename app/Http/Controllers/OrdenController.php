@@ -86,9 +86,10 @@ class OrdenController extends Controller
      * @param  \App\Orden  $orden
      * @return \Illuminate\Http\Response
      */
-    public function show(Orden $orden)
+    public function show(Orden $ordene)
     {
         //
+        return view('ordenes.detalles', compact('ordene'));
     }
 /*
     public function fnotificar(Orden $ordene)

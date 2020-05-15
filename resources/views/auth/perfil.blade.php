@@ -52,10 +52,12 @@ Configuración
             </div>
             <div class="col-md-4 mb-4 ml-4">
                 <img src="{{asset($usuario->avatar)}}" width="75px" height="75px" class="rounded-circle">
+                <a href="" class="btn btn-success ml-2"  onclick="window.open('{{asset($usuario->avatar)}}', '_blank');">Ver Imagen</a>
             </div>
         </div>
 
-        <button class="btn btn-primary" type="submit">Modificar</button>
+        <a href="{{route('home')}}" class="btn btn-primary mr-2">Volver</a>
+        <button class="btn btn-success" type="submit">Modificar</button>
     </form>
 </div>
 

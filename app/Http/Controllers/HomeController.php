@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Cliente;
+use App\Orden;
 class HomeController extends Controller
 {
     /**
@@ -23,7 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $ganancias=Orden::whereMonth('created_at', date('m'))->sum('pvp');
+        $ordenes=Orden::where('estadoOrden', 'like', 'abierta')->orWhere('estadoOrden', 'like', 'pendiente')->count();
+        $clientes=Cliente::all()->count();
+        return view('home', compact('clientes', 'ordenes', 'ganancias'));
     }
     
 }
