@@ -57,14 +57,14 @@ class MessageController extends Controller
     public function sendMessage(Request $request)
     {
         $from = Auth::id();
-        $to = $request->receiver_id;
+        $to = $request->receptor_id;
         $message = $request->message;
 
         $data = new Message();
         $data->from = $from;
         $data->to = $to;
         $data->message = $message;
-        $data->is_read = 0; // message will be unread when sending message
+        $data->is_read = 0; 
         $data->save();
 
         // pusher

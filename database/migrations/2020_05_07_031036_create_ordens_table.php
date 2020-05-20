@@ -18,7 +18,7 @@ class CreateOrdensTable extends Migration
             $table->bigInteger('cliente_id')->unsigned();
             $table->bigInteger('empleado_id')->unsigned();
             $table->string('estadoOrden')->default('Pendiente');
-            $table->string('serialOrden');
+            $table->string('serialOrden')->unique();
             $table->string('marcaEquipo');
             $table->string('modeloEquipo');
             $table->string('descripcionFallo');

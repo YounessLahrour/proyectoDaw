@@ -14,7 +14,7 @@
     </div>
 @endif
 <div class="form">
-<h1 class="mb-3">{{$empleado->nombre}}, {{$empleado->apellido}}</h1>
+<h1 class="mb-3 border-bottom">{{$empleado->nombre}}, {{$empleado->apellido}}</h1>
   <form action="{{route('empleados.update', $empleado)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
@@ -43,7 +43,20 @@
       </div>
       <div class="col-md-4 mb-4 ml-2">
         <label for="validationDefaultUsername">Alta/Baja</label>
-          <input type="text" class="form-control" name="estadoEmpleo"  value="{{$empleado->estadoEmpleo}}" required>    
+        <select name="estadoEmpleo" class="form-control">
+          @if($empleado->estadoEmpleo == 'Alta')
+          <option selected>Alta</option>
+          @else
+          <option>Alta</option>
+          @endif
+
+          @if($empleado->estadoEmpleo == 'Baja')
+          <option selected>Baja</option>
+          @else
+          <option>Baja</option>
+          @endif
+        </select>
+             
       </div>
     </div>
     <div class="form-row">
@@ -57,7 +70,7 @@
       </div>
       <div class="col-md-4 mb-4 ml-2">
         <label for="validationDefaultUsername">E-mail</label>
-          <input type="mail" class="form-control" name="mail" value="{{$empleado->mail}}" required>    
+          <input type="mail" class="form-control" name="mail" value="{{$empleado->email}}" required>    
       </div>
     </div>
     

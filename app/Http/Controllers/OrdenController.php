@@ -25,17 +25,20 @@ class OrdenController extends Controller
     public function index(Request $request)
     {
         //
-        $empleado=Empleado::where('dni', Auth::user()->dni)->first();
+        
+        //$empleado=Empleado::where('dni', Auth::user()->dni)->first();
        // dd($empleado->nombre);
-
+        $empleados=Empleado::all();
         $serial=$request->get('serial');
         $estado=$request->get('estado');
+        $empleado=$request->get('empleado_id');
         $ordenes = Orden::orderBy('id')
-        ->where('empleado_id',$empleado->id)
+        //->where('empleado_id',$empleado->id)
         ->estado($estado)
         ->serial($serial)
+        ->empleado($empleado)
         ->paginate(5);
-        return view('ordenes.index', compact('ordenes','request'));
+        return view('ordenes.index', compact('ordenes','request', 'empleados'));
     }
 
     /**
@@ -47,7 +50,7 @@ class OrdenController extends Controller
     {
         //
         $estados = ['Abierta', 'Pendiente', 'Cerrada'];
-        $empleados = Empleado::orderBy('id')->get();
+        $empleados = Empleado::orderBy('id')->where('estadoEmpleo', 'Alta')->get();
         $clientes = Cliente::orderBy('id')->get();
         return view('ordenes.create', compact('empleados', 'clientes', 'estados'));
     }
@@ -60,7 +63,14 @@ class OrdenController extends Controller
      */
     public function store(OrdenRequest $request)
     {
-        //
+        //funcion para generar codigo
+         function generarCodigo($longitud) {
+            $key = '';
+            $pattern =strtoupper('1234567890abcdefghijklmnopqrstuvwxyz') ;
+            $max = strlen($pattern)-1;
+            for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
+            return $key;
+        }
         //validaciones genericas
         $datos = $request->validated();
         //creo un objeto de orden
@@ -69,7 +79,7 @@ class OrdenController extends Controller
         $ordene->empleado_id = $datos['empleado'];
         $ordene->cliente_id = $datos['cliente'];
         $ordene->estadoOrden = $datos['estado'];
-        $ordene->serialOrden = time();
+        $ordene->serialOrden = generarCodigo(8);
         $ordene->marcaEquipo = $datos['marcaEquipo'];
         $ordene->modeloEquipo = $datos['modeloEquipo'];
         $ordene->descripcionFallo = $datos['descripcionFallo'];
@@ -79,6 +89,8 @@ class OrdenController extends Controller
         $ordene->save();
         return redirect()->route('ordenes.index')->with('mensaje', 'Orden creada con éxito');
     }
+
+   
 
     /**
      * Display the specified resource.

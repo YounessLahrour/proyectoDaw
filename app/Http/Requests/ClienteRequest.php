@@ -19,7 +19,8 @@ class ClienteRequest extends FormRequest
         if($this->nombre!=null && $this->apellido!=null){
             $this->merge([
                 'nombre'=>ucwords($this->nombre),
-                'apellido'=>ucwords($this->apellido)
+                'apellido'=>ucwords($this->apellido),
+                'dni'=>strtoupper($this->dni)
             ]);
         }
     }
@@ -35,17 +36,17 @@ class ClienteRequest extends FormRequest
             return [
             'nombre'=>['required'],
             'apellido'=>['required'],
-            'dni'=>['required'],
+            'dni'=>['required','unique:users,dni', 'min:9','regex:/^[XYZxyz]?([0-9]{7,8})([A-Za-z])$/i', 'max:9','unique:empleados,dni','unique:clientes,dni,'.$this->cliente->id],
             'telefono'=>['required'],
-            'mail'=>['required','unique:clientes,mail,'.$this->cliente->id]
+            'mail'=>['required','unique:users,email','unique:empleados,email','unique:clientes,email,'.$this->cliente->id]
         ];
         }else{
             return [
                 'nombre'=>['required'],
                 'apellido'=>['required'],
-                'dni'=>['required'],
+                'dni'=>['required','unique:users,dni', 'min:9','regex:/^[XYZxyz]?([0-9]{7,8})([A-Za-z])$/i', 'max:9','unique:empleados,dni','unique:clientes,dni'],
                 'telefono'=>['required'],
-                'mail'=>['required','unique:clientes,mail']      
+                'mail'=>['required','unique:users,email','unique:empleados,email','unique:clientes,email']      
             ];
         }
     }
@@ -55,6 +56,8 @@ class ClienteRequest extends FormRequest
             'nombre.required'=>"El campo nombre es obligatorio",
             'apellido.required'=>"El campo apellido es obligatorio",
             'dni.required'=>"El campo dni es obligatorio",
+            'dni.unique'=>"DNI-NIE duplicado",
+            'dni.regex'=>"El formato del DNI-NIE no es correcto",
             'telefono.required'=>"El campo telefono es obligatorio",
             'mail.unique'=>"Ya existe ese E-mail en el sistema",
             'mail.required'=>"El campo E-mail es obligatorio"

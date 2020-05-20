@@ -191,7 +191,7 @@
                     <h4 class="text8"></h4><img src="{{asset(Auth::user()->avatar)}}" width="50px" height="50px" class="rounded-circle">
                 </li>
             </a>
-            <a href="{{route('home')}}">
+            <a href="{{route('home')}}" class="i1">
                 <li><span class="lnr lnr-home icon1"></span>
                     <h4 class="text1">Inicio</h4>
                 </li>
@@ -259,7 +259,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script>
-        var receiver_id = '';
+        var receptor_id = '';
         var my_id = "{{ Auth::id() }}";
         $(document).ready(function() {
             // ajax setup form csrf token
@@ -282,7 +282,7 @@
                 if (my_id == data.from) {
                     $('#' + data.to).click();
                 } else if (my_id == data.to) {
-                    if (receiver_id == data.from) {
+                    if (receptor_id == data.from) {
                         // if receiver is selected, reload the selected user ...
                         $('#' + data.from).click();
                     } else {
@@ -303,10 +303,10 @@
                 $(this).addClass('active');
                 $(this).find('.pending').remove();
 
-                receiver_id = $(this).attr('id');
+                receptor_id = $(this).attr('id');
                 $.ajax({
                     type: "get",
-                    url: "message/" + receiver_id, // need to create this route
+                    url: "message/" + receptor_id, 
                     data: "",
                     cache: false,
                     success: function(data) {
@@ -315,18 +315,19 @@
                     }
                 });
             });
+            
 
             $(document).on('keyup', '.input-text input', function(e) {
                 var message = $(this).val();
+                //Compruebo si se ha presionado la tecla Enter y que el mensaje no esta vacio y que se haya seleccionado un user
 
-                // check if enter key is pressed and message is not null also receiver is selected
-                if (e.keyCode == 13 && message != '' && receiver_id != '') {
-                    $(this).val(''); // while pressed enter text box will be empty
+                if (e.keyCode == 13 && message != '' && receptor_id != '') {
+                    $(this).val(''); // cuendo presiono Enter vacio el campo 
 
-                    var datastr = "receiver_id=" + receiver_id + "&message=" + message;
+                    var datastr = "receptor_id=" + receptor_id + "&message=" + message;
                     $.ajax({
                         type: "post",
-                        url: "message", // need to create this post route
+                        url: "message", 
                         data: datastr,
                         cache: false,
                         success: function(data) {

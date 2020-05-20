@@ -20,4 +20,16 @@ class Cliente extends Model
         $apellido=$cliente->apellido;
         return "$nombre, $apellido";
     }
+
+    public function scopeDni($query, $v){
+        if(!isset($v)){
+           return $query;
+        }
+        if($v=='%'){
+            return $query;
+        }
+        if(isset($v)){
+            return $query->where('dni', 'like', $v);
+        }
+    }
 }

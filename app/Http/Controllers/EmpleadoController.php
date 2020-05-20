@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Empleado;
 use Illuminate\Http\Request;
 use App\Http\Requests\EmpleadoRequest;
+use App\User;
 use Illuminate\Support\Facades\Storage;
 class EmpleadoController extends Controller
 {
@@ -17,12 +18,22 @@ class EmpleadoController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index()
+    public function index(Request $request)
     {
         //
         $empleados=Empleado::orderBy('id')
+        ->where('estadoEmpleo', 'like', 'Alta')
+        ->filtro($request->get('filtro'))
+        ->dni($request->dni)
         ->paginate(5);
-        return view('empleados.index', compact('empleados'));
+        return view('empleados.index', compact('empleados', 'request'));
+    }
+
+    public function inactivos(){
+        $empleados=Empleado::orderBy('id')
+        ->where('estadoEmpleo', 'like', 'Baja')
+        ->paginate(5);
+        return view('empleados.indexD', compact('empleados'));
     }
 
     /**
@@ -46,7 +57,7 @@ class EmpleadoController extends Controller
      */
     public function store(EmpleadoRequest $request)
     {
-        //
+        /*
  //validaciones genericas
        $datos=$request->validated();
        //cojo los datos por que voy a modificar el request
@@ -74,7 +85,7 @@ class EmpleadoController extends Controller
 
        }
        $empleado->save();
-       return redirect()->route('empleados.index')->with('mensaje', 'Empleado creado correctamente');
+       return redirect()->route('empleados.index')->with('mensaje', 'Empleado creado correctamente');*/
     }
 
     /**
@@ -111,8 +122,18 @@ class EmpleadoController extends Controller
     public function update(EmpleadoRequest $request, Empleado $empleado)
     {
         //
+        $usuario=User::where('dni', $empleado->dni)->first();
         //validaciones genericas
        $datos=$request->validated();
+        //compruebo si se desea activar la cuenta
+        if($empleado->estadoEmpleo != $datos['estadoEmpleo']){
+            if($datos['estadoEmpleo']=='Alta'){
+                $usuario->active='1';
+            }else{
+                $usuario->active='0';
+            }
+            $usuario->update();
+        }
        //cojo los datos por que voy a modificar el request
        $empleado->nombre=$datos['nombre'];
        $empleado->apellido=$datos['apellido'];
@@ -122,7 +143,9 @@ class EmpleadoController extends Controller
        $empleado->fechaNacimiento=$datos['fechaNacimiento'];
        $empleado->direccion=$datos['direccion'];
        $empleado->telefono=$datos['telefono'];
-       $empleado->mail=$datos['mail'];
+       $empleado->email=$datos['mail'];
+
+       
        
         //compruebo si he subido archivo
         if(isset($datos['foto'])){

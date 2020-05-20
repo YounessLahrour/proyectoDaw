@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('plantillas.plantilla')
 @section('head')
 <link rel="stylesheet" href="./css/main.css">
 @endsection
@@ -10,27 +10,10 @@
 <p class="alert alert-success my-3">{{$texto}}</p>    
 @endif
 <div>
-    <form name="search" action="#" method="GET" class="form-inline float-right mb-2 mt-2">
+<form name="search" action="{{route('clientes.index')}}" method="GET" class="form-inline float-right mb-3 mt-2">
     <i class="fa fa-search ml-2 mr-2" aria-hidden="true"></i>           
-    Empl. mas reparaciones:
-    <select class="ml-2 mr-2" name="articulo_id" onchange="this.form.submit()">
-            <option value="%">Todos...</option>
-            <option value="%">youness</option>
-            <option value="%">juan</option>
-    </select>
-    Filtrar por:
-      <select class="ml-2" name="filtro" onchange="this.form.submit()">
-              <option value="%">Todos...</option>
-              <option value="ventas" selected>Vend. con mas ventas</option>
-              
-              <option value="ventas">Vend. con mas ventas</option>
-              
-              <option value="ingresos" selected>Más ingresos generados</option>
-              
-              <option value="ingresos" >Más ingresos generados</option>    
-                   
-                 
-      </select>
+    DNI-NIE:
+      <input type="text" name="dni" placeholder="DNI-NIE"  class="form-control ml-2">
     </form>
 
   <a href="{{route('clientes.create')}}" class="btn btn-success mb-2 mt-2" ><i class="lnr lnr-plus-circle"></i> Crear Cliente</a>

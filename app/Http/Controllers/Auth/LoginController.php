@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -37,4 +39,23 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+   public function login(){
+
+    $credentials = $this->validate(request(), [
+        'email'=>'email|required',
+        'password'=>'required'
+    ]);
+
+    if(Auth::attempt($credentials)){
+        if(Auth::user()->active == '1'){
+            return redirect(RouteServiceProvider::HOME);
+        }
+            
+    }
+    Auth::guard()->logout();
+    //Auth::logout();
+            return back()->withErrors(['error'=>'!Cuenta desactivada! Contacte con el administrador.']);
+   }
+    
 }

@@ -54,9 +54,9 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'apellido' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users','unique:empleados','unique:clientes'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'dni' => ['required', 'string', 'min:9', 'max:9','unique:users','unique:empleados'],
+            'dni' => ['required', 'string', 'min:9','regex:/^[XYZxyz]?([0-9]{7,8})([A-Za-z])$/i', 'max:9','unique:users','unique:empleados','unique:clientes'],
             'direccion' => ['required', 'string', 'max:255'],
             'telefono' => ['required', 'unique:empleados'],
             'provincia' => ['required'],
@@ -75,14 +75,14 @@ class RegisterController extends Controller
     {
 
         $empleado = new Empleado();
-        $empleado->nombre = $data['name'];
-        $empleado->apellido = $data['apellido'];
-        $empleado->dni = $data['dni'];
+        $empleado->nombre =ucwords($data['name']) ;
+        $empleado->apellido =ucwords($data['apellido']);
+        $empleado->dni = strtoupper($data['dni']);
         $empleado->provincia = $data['provincia'];
         $empleado->fechaNacimiento = $data['fechaNacimiento'];
         $empleado->direccion = $data['direccion'];
         $empleado->telefono = $data['telefono'];
-        $empleado->mail = $data['email'];
+        $empleado->email = $data['email'];
 
         if (isset($data['foto'])) {
             //Todo bien hemos subido un archivo y es de imagen
@@ -100,9 +100,9 @@ class RegisterController extends Controller
             $empleado->foto = "img/$nombre1";
             $empleado->save();
             return User::create([
-                'name' => $data['name'],
-                'apellido'=>$data['apellido'],
-                'dni' => $data['dni'],
+                'name' => ucwords($data['name']),
+                'apellido'=>ucwords($data['apellido']),
+                'dni' =>strtoupper($data['dni']),
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
                 'avatar' => "img/$nombre"
@@ -111,9 +111,9 @@ class RegisterController extends Controller
 
             $empleado->save();
             return User::create([
-                'name' => $data['name'] ,
-                'apellido'=>$data['apellido'],
-                'dni' => $data['dni'],
+                'name' => ucwords($data['name']),
+                'apellido'=>ucwords($data['apellido']),
+                'dni' =>strtoupper($data['dni']),
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
 

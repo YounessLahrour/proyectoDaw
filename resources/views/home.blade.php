@@ -2,7 +2,8 @@
 
 @section('contenido')
 <div>
-<table class="table table-borderless table-dark  mt-5 ">
+
+<table class="table table-borderless table-dark  ">
   <thead>
     <tr class="mb-5">
       <th scope="col"><i class="lnr lnr-laptop-phone iconos"></i> <br> Equipos en Reparación  </th>

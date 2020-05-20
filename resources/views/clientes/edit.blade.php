@@ -14,7 +14,7 @@
     </div>
 @endif
 <div class="form">
-<h1 class="mb-3">{{$cliente->nombre}}, {{$cliente->apellido}}</h1>
+<h1 class="mb-3 border-bottom">{{$cliente->nombre}}, {{$cliente->apellido}}</h1>
   <form action="{{route('clientes.update', $cliente)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')

@@ -19,12 +19,13 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         $clientes=Cliente::orderBy('id')
+        ->dni($request->dni)
         ->paginate(5);
-        return view('clientes.index', compact('clientes'));
+        return view('clientes.index', compact('clientes', 'request'));
     }
 
     /**
@@ -55,7 +56,7 @@ class ClienteController extends Controller
         $cliente->apellido=$datos['apellido'];
         $cliente->dni=$datos['dni'];
         $cliente->telefono=$datos['telefono'];
-        $cliente->mail=$datos['mail'];
+        $cliente->email=$datos['mail'];
  
         $cliente->save();
         return redirect()->route('clientes.index')->with('mensaje', 'Cliente creado correctamente');
@@ -102,7 +103,7 @@ class ClienteController extends Controller
        $cliente->apellido=$datos['apellido'];
        $cliente->dni=$datos['dni'];
        $cliente->telefono=$datos['telefono'];
-       $cliente->mail=$datos['mail'];
+       $cliente->email=$datos['mail'];
 
        $cliente->update();
        return redirect()->route('clientes.index')->with('mensaje', 'Cliente modificado correctamente');

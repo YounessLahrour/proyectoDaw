@@ -23,7 +23,7 @@ class CreateEmpleadosTable extends Migration
             $table->enum("estadoEmpleo", ["Alta","Baja" ]);
             $table->string('telefono')->unique();
             $table->date('fechaNacimiento');
-            $table->string('mail')->unique();
+            $table->string('email')->unique();
             $table->string('foto')->default('/img/empleados/default.jpg');
             $table->timestamps();
         });

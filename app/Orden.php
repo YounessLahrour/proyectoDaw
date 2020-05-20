@@ -48,5 +48,17 @@ class Orden extends Model
         }
     }
 
+    public function scopeEmpleado($query, $v){
+        if(!isset($v)){
+           return $query;
+        }
+        if($v=='%'){
+            return $query;
+        }
+        if(isset($v)){
+            return $query->where('empleado_id', 'like', $v);
+        }
+    }
+
 
 }

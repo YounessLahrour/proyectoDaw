@@ -23,7 +23,7 @@
               
               <td>{{$item->pivot->id}}</td>
               <td>{{$empleado->nombre}}, {{$empleado->apellido}}</td>
-              <td>{{$item->pivot->cliente_id}}</td>
+              <td>{{$empleado->cliente($item->pivot->cliente_id)->nombre}}, {{$empleado->cliente($item->pivot->cliente_id)->apellido}}</td>
               <td>{{$item->pivot->serialOrden}}</td>
               <td>{{$item->pivot->created_at}}</td>
               

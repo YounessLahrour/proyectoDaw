@@ -14,7 +14,7 @@
     </div>
 @endif
 <div class="form">
-<h1 class="mb-3">Nueva Orden</h1>
+<h1 class="mb-3 border-bottom">Nueva Orden</h1>
   <form action="{{route('ordenes.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-row">
@@ -66,7 +66,8 @@
       </div>
     </div>
           
-    <button class="btn btn-primary" type="submit">Crear</button>
+    <button class="btn btn-success" type="submit">Crear</button>
+    <a href="{{route('ordenes.index')}}" class="btn btn-info">Volver</a>
   </form>
 </div>
 

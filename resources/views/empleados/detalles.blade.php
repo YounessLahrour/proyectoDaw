@@ -38,10 +38,20 @@
         <label for="validationDefault02">Fecha de Nacimiento: <b>{{$empleado->fechaNacimiento}}</b></label>
       </div>
       <div class="col-md-4 mb-4 ml-2">
-        <label for="validationDefaultUsername">E-mail: <b>{{$empleado->mail}}</b></label>
+        <label for="validationDefaultUsername">E-mail: <b>{{$empleado->email}}</b></label>
       </div>
     </div>
-    
+    <div class="form-row ml-4">
+      <div class="col-md-4 mb-4 mr-1">
+        <label for="validationDefault01">Órdenes Pendientes: <b>{{$empleado->ordenes()}}</b></label>
+      </div>
+      <div class="col-md-4 mb-4 ml-1">
+        <label for="validationDefault02">Órdenes Finalizadas: <b>{{$empleado->ordenesCerradas()->count()}}</b></label>
+      </div>
+      <div class="col-md-4 mb-4 ml-2">
+        <label for="validationDefaultUsername">Ingresos Generados: <b>{{$empleado->ingresos()}} €</b></label>
+      </div>
+    </div>
     <div class="form-row ">
         
         <div class="col-md-4 mb-4 ml-4">

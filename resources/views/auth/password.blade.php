@@ -13,7 +13,7 @@ Cambiar password
 <p class="alert alert-danger my-3">{{$texto}}</p>    
 @endif
 <div class="form">
-    <h1 class="mb-3">Cambio de Contraseña</h1>
+    <h1 class="mb-3 border-bottom">Cambio de Contraseña</h1>
     <form action="{{route('perfil.password', $usuario)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')

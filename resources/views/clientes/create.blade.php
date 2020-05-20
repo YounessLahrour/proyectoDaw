@@ -14,7 +14,7 @@
     </div>
 @endif
 <div class="form">
-  <h1 class="mb-3">Nuevo Cliente</h1>
+  <h1 class="mb-3 border-bottom">Nuevo Cliente</h1>
   <form action="{{route('clientes.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-row">

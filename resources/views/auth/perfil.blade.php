@@ -11,7 +11,7 @@ Configuración
 <p class="alert alert-danger my-3">{{$texto}}</p>    
 @endif
 <div class="form">
-    <h1 class="mb-3">Configuración de perfil</h1>
+    <h1 class="mb-3 border-bottom">Configuración de perfil</h1>
     <form action="{{route('perfil.perfil', $usuario)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')

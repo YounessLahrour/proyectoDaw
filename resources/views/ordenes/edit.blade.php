@@ -14,7 +14,7 @@
     </div>
 @endif
 <div class="form">
-<h1 class="mb-3">Nº Orden {{$ordene->serialOrden}}</h1>
+<h1 class="mb-3 border-bottom">Nº Orden {{$ordene->serialOrden}}</h1>
   <form action="{{route('ordenes.update', $ordene)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')

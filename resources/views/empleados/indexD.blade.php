@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="./css/main.css">
 @endsection
 @section('titulo')
-    Empleados de Empresa
+    Empleados inactivos
 @endsection
 @section('contenido')
 @if ($texto=Session::get('mensaje'))
@@ -11,36 +11,11 @@
 @endif
 
 <div>
-  Empleados:
+    Empleados:
 <div class="btn-group mt-2 ml-1" role="group" aria-label="Basic example">
-<a href="{{route('empleados.index')}}"><button type="button" class="btn btn-primary">Activos</button></a> 
- <a href="{{route('inactivos')}}"><button type="button" class="btn btn-secondary">Inactivos</button></a>   
+<a href="{{route('empleados.index')}}"><button type="button" class="btn btn-secondary">Activos</button></a> 
+    <a href="{{route('inactivos')}}"><button type="button" class="btn btn-primary">Inactivos</button></a>
   </div>
-<form name="search" action="{{route('empleados.index')}}" method="GET" class="form-inline float-right mb-2 mt-2">
-    <i class="fa fa-search ml-2 mr-2" aria-hidden="true"></i>           
-    Empleado: 
-    <select name="filtro" onchange="this.form.submit()" class="form-control ml-2 mr-2">
-            <option value="%">Todos...</option>
-            @if ($request->filtro == '1')
-            <option value="1" selected>Con + ordenes Finalizadas</option>
-            @else
-            <option value="1">Con + ordenes Finalizadas</option>
-            @endif
-            @if ($request->filtro == '2')
-            <option value="2" selected>Con - ordenes Finalizadas</option>
-            @else
-            <option value="2">Con - ordenes Finalizadas</option>
-            @endif
-            @if ($request->filtro == '3')
-            <option value="3" selected>Con más ingresos generados</option>
-            @else
-            <option value="3" >Con más ingresos generados</option>    
-            @endif
-            
-    </select>
-    DNI-NIE:
-      <input type="text" name="dni" placeholder="DNI-NIE"  class="form-control ml-1">
-    </form>
     
     <table class="table table-dark">
         <thead>

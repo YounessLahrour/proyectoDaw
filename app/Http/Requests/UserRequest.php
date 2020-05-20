@@ -15,7 +15,15 @@ class UserRequest extends FormRequest
     {
         return true;
     }
-
+    public function prepareForValidation(){
+        if($this->nombre!=null && $this->apellido!=null){
+            $this->merge([
+                'name'=>ucwords($this->nombre),
+                'apellido'=>ucwords($this->apellido)
+                
+            ]);
+        }
+    }
    /**
      * Get the validation rules that apply to the request.
      *
@@ -27,7 +35,7 @@ class UserRequest extends FormRequest
             return [
                 'name' => ['required', 'string', 'max:255'],
                 'apellido' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$this->usuario->id],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users','unique:empleados','unique:clientes'.$this->usuario->id],
                 'foto' => ['nullable'] 
         ];
         
