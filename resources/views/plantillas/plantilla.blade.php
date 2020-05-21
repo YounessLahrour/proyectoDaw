@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
   <title>@yield('titulo')</title>
+  <!-- PWA assets-->
+  @laravelPWA
   <style>
     A:link {text-decoration:none;} A:visited {text-decoration:none;} A:active {text-decoration:none;}
   </style>

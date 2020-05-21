@@ -28,6 +28,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- PWA assets-->
+    @laravelPWA
     <style>
         A:link {text-decoration:none;} A:visited {text-decoration:none;} A:active {text-decoration:none;}
         /* width */
@@ -261,6 +263,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script>
+
+        
         var receptor_id = '';
         var my_id = "{{ Auth::id() }}";
         $(document).ready(function() {

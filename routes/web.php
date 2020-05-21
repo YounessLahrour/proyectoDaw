@@ -21,6 +21,10 @@ Route::resource('clientes', 'ClienteController');
 Route::resource('ordenes', 'OrdenController');
 //Abajo van las rutas POST
 
+//ruta para pwa en offline
+Route::get('/offline', function () {
+    return view('vendor.laravelpwa.offline');
+});
 
 
 Auth::routes();
