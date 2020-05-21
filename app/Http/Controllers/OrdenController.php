@@ -117,7 +117,7 @@ class OrdenController extends Controller
         $empleado=Empleado::find($request->empleado);
         $ordene = Orden::find($request->orden);
         $cliente = Cliente::find($ordene->cliente_id);
-        Mail::to($cliente->mail)->send(new EmergencyCallReceived($ordene));
+        Mail::to($cliente->email)->send(new EmergencyCallReceived($ordene));
         $ordene->notificacion="Notificado";
         $ordene->update();
         $empleado->clientes()->attach($cliente->id, ['serialOrden'=>$ordene->serialOrden]);

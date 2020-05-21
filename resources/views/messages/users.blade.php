@@ -23,7 +23,7 @@
 
                                 {{--will show unread count notification--}}
                                 @if($user->unread)
-                                    <span class="pending ml-2">{{ $user->unread }}</span>
+                                    <span class="pending ml-3">{{ $user->unread }}</span>
                                 @endif
 
                             </li>

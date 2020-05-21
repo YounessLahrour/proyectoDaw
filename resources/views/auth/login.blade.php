@@ -19,9 +19,10 @@
 
     <div class="container">
         @if ($texto=Session::get('mensaje'))
-        <p class="alert alert-success my-3">{{$texto}}</p>
+        <p class="alert alert-success text-center my-3 mt-3">{{$texto}}</p>
         @endif
         <div class="row justify-content-center pt-5 mt-5 m-1">
+            
             <div class="col-md-6 col-sm-8 col-xl-4 col-lg-5 formulario">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -49,11 +50,6 @@
                             <div class="input-group-text"><i class="lnr lnr-lock"></i></div>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Contraseña" required autocomplete="current-password">
 
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
                         </div>
 
                     </div>
@@ -61,7 +57,7 @@
                         <input type="submit" class="btn btn-block iniciar" value="Entrar">
                     </div>
                     {!! $errors->first('error', '<span class="help-block" style="color:red">:message</span>') !!}
-
+                    
                     <div class="form-group mx-sm-4  text-right">
                         <span class=""><a href="{{route('password.request')}}" class="olvide">¿Has olvidado la contraseña?</a></span>
                     </div>

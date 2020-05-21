@@ -55,7 +55,8 @@ class LoginController extends Controller
     }
     Auth::guard()->logout();
     //Auth::logout();
-            return back()->withErrors(['error'=>'!Cuenta desactivada! Contacte con el administrador.']);
+            return back()->withErrors(['error'=>'!Email o Contraseña incorrectos! O su cuenta está DESACTIVADA.'])
+            ->withInput(request(['email']));
    }
     
 }

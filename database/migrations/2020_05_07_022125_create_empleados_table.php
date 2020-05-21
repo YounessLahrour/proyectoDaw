@@ -20,7 +20,7 @@ class CreateEmpleadosTable extends Migration
             $table->string('dni')->unique();
             $table->string('direccion');
             $table->string('provincia');
-            $table->enum("estadoEmpleo", ["Alta","Baja" ]);
+            $table->enum("estadoEmpleo", ["Baja","Alta" ]);
             $table->string('telefono')->unique();
             $table->date('fechaNacimiento');
             $table->string('email')->unique();

@@ -5,8 +5,9 @@
 @endsection
 @section('contenido')
 
-
-    <table class="table table-dark mt-4">
+<div>
+  <h1 class="text-center mt-2">Clientes notificados</h1>
+    <table class="table table-dark mt-2">
         <thead>
           <tr>
             <th scope="col">ID</th>

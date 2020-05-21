@@ -37,7 +37,7 @@
           <td>{{$cliente->nombre}}</td>
               <td>{{$cliente->apellido}}</td>
               <td>
-                    {{$cliente->mail}}
+                    {{$cliente->email}}
               </td>
               <td>
                   <form  action="{{route('clientes.destroy', $cliente)}}" method="POST">

@@ -2,7 +2,7 @@
 
 @section('contenido')
 <div>
-
+<h1 class="text-center mt-2">Bienvenido</h1>
 <table class="table table-borderless table-dark  ">
   <thead>
     <tr class="mb-5">

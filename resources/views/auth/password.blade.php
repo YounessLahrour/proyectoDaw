@@ -25,7 +25,7 @@ Cambiar password
             </div>
             <div class="col-md-4 mb-4 ml-1">
                 <label for="validationDefault02">Nueva Contraseña</label>
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Nueva Contraseña" name="password" required autocomplete="new-password">
 
                 @error('password')
                 <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@ Cambiar password
             </div>
             <div class="col-md-4 mb-4 ml-2">
                 <label for="validationDefaultUsername">Confirmar Contraseña</label>
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirmar Contraseña" required autocomplete="new-password">
             </div>
         </div>
 

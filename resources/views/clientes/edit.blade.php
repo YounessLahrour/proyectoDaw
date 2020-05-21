@@ -39,7 +39,7 @@
       </div>
       <div class="col-md-4 mb-4 ml-2">
         <label for="validationDefaultUsername">E-mail</label>
-          <input type="mail" class="form-control" name="mail" value="{{$cliente->mail}}" required>    
+          <input type="mail" class="form-control" name="mail" value="{{$cliente->email}}" required>    
       </div>
     </div>
                 

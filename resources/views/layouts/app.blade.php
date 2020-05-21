@@ -29,6 +29,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
+        A:link {text-decoration:none;} A:visited {text-decoration:none;} A:active {text-decoration:none;}
         /* width */
         ::-webkit-scrollbar {
             width: 7px;
@@ -138,6 +139,7 @@
 
         .received {
             background: #ffffff;
+            color:#717171;
         }
 
         .sent {
@@ -152,7 +154,7 @@
         }
 
         .date {
-            color: white;
+            
             font-size: 12px;
         }
 

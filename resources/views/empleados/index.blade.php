@@ -9,7 +9,9 @@
 @if ($texto=Session::get('mensaje'))
 <p class="alert alert-success my-3">{{$texto}}</p>    
 @endif
-
+@if ($texto=Session::get('error'))
+<p class="alert alert-danger my-3">{{$texto}}</p>    
+@endif
 <div>
   Empleados:
 <div class="btn-group mt-2 ml-1" role="group" aria-label="Basic example">
@@ -69,7 +71,7 @@
                   <form  action="{{route('empleados.destroy', $empleado)}}" method="POST">
                       @csrf
                       @method('DELETE')
-                      <button type="submit" onclick="return confirm('¿Desea borrar empleado?')" class="fa fa-trash  btn btn-danger"></button>
+                      <button type="submit" onclick="return confirm('¿Desea borrar empleado-usuario?')" class="fa fa-trash  btn btn-danger"></button>
                       <a href="{{route('empleados.edit', $empleado)}}" class="ml-2 lnr lnr-pencil btn btn-warning"></a>
                       </form>
               </td>
