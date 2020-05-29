@@ -13,6 +13,6 @@ $factory->define(Cliente::class, function ( $faker) {
         'apellido'=>$faker->lastName(),
         'dni'=>$faker->unique()->ean8,
         'telefono'=>$faker->e164PhoneNumber,
-        'mail'=>$faker->unique()->safeEmail
+        'email'=>$faker->unique()->safeEmail
     ];
 });

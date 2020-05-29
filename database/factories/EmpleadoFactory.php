@@ -18,6 +18,6 @@ $factory->define(Empleado::class, function ($faker) {
         'estadoEmpleo'=>$estado[rand(0, count($estado)-1)],
         'telefono'=>$faker->e164PhoneNumber,
         'fechaNacimiento'=>$faker->date($format = 'Y-m-d', $max = 'now'),
-        'mail'=>$faker->unique()->safeEmail     
+        'email'=>$faker->unique()->safeEmail     
     ];
 });

@@ -27,8 +27,9 @@ class Empleado extends Model
         return $ordenes;
     }
 
-    public function cliente($id){
-        $cliente=Cliente::find($id);
+    public function cliente($id)
+    {
+        $cliente = Cliente::find($id);
         return $cliente;
     }
 
@@ -36,20 +37,21 @@ class Empleado extends Model
     {
         $ordenes = Orden::where('empleado_id', 'like', $this->id)
             ->where('estadoOrden', 'like', 'Cerrada');
-            //->count();
+        //->count();
         return $ordenes;
     }
-    public function ordenesIngresos()
-    {
+
+    /* public function ordenesIngresos(){
         $ordenes = Orden::where('empleado_id', 'like', $this->id)
             ->where('estadoOrden', 'like', 'Cerrada')
             ->get();
         return $ordenes;
-    }
+    }*/
 
-    public function ingresos(){
-        $ingresos=0;
-        foreach ($this->ordenesIngresos() as $orden) {
+    public function ingresos()
+    {
+        $ingresos = 0;
+        foreach ($this->ordenesCerradas()->get() as $orden) {
             $ingresos += $orden->pvp;
         }
         return $ingresos;
@@ -67,24 +69,22 @@ class Empleado extends Model
         if ($v == '1') {
             $empleados = Empleado::all();
             $empleado = Empleado::find(1);
-            $id=0;
-            
+            $id = 0;
+
             foreach ($empleados as $item) {
-                //dd($empleado->ordenesCerradas());
+
                 if ($item->ordenesCerradas()->count() >= $empleado->ordenesCerradas()->count()) {
                     $id = $item->id;
-                   
+
                     $empleado = $item;
-                    //dd($empleado);
                 }
-                // dd($item);
             }
             return $query->where('id', 'like', $id);
         }
         if ($v == '2') {
             $empleados = Empleado::all();
             $empleado = Empleado::find(1);
-            $id=0;
+            $id = 0;
             foreach ($empleados as $item) {
                 if ($item->ordenesCerradas()->count() <= $empleado->ordenesCerradas()->count()) {
                     $id = $item->id;
@@ -112,17 +112,18 @@ class Empleado extends Model
                 $ventaN = 0;
             }
             return $query->where('id', 'like', $id);
-        }   
+        }
     }
 
-    public function scopeDni($query, $v){
-        if(!isset($v)){
-           return $query;
-        }
-        if($v=='%'){
+    public function scopeDni($query, $v)
+    {
+        if (!isset($v)) {
             return $query;
         }
-        if(isset($v)){
+        if ($v == '%') {
+            return $query;
+        }
+        if (isset($v)) {
             return $query->where('dni', 'like', $v);
         }
     }

@@ -4,7 +4,7 @@ return [
     'name' => 'YuniTic',
     'manifest' => [
         'name' => env('APP_NAME', 'YuniTic'),
-        'short_name' => 'PWA',
+        'short_name' => 'YuniTic',
         'start_url' => '/',
         'background_color' => '#d7dce6',
         'theme_color' => '#000000',

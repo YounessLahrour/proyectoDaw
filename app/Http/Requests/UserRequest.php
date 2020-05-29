@@ -35,7 +35,7 @@ class UserRequest extends FormRequest
             return [
                 'name' => ['required', 'string', 'max:255'],
                 'apellido' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:clientes,email','unique:empleados,email','unique:users,email,'.$this->usuario->id],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:clientes,email','unique:users,email,'.$this->usuario->id],
                 'foto' => ['nullable'] 
         ];
         

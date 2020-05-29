@@ -173,5 +173,8 @@ class OrdenController extends Controller
     public function destroy(Orden $orden)
     {
         //
+        $orden->delete();
+        //y volvemos al index de ordenes
+        return redirect()->route('ordenes.index')->with('mensaje', 'Orden borrada correctamente');
     }
 }

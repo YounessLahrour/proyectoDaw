@@ -7,6 +7,7 @@ use App\Empleado;
 use App\Cliente;
 class Orden extends Model
 {
+    protected $fillable = ['cliente_id', 'empleado_id', 'pvp', 'marcaEquipo', 'modeloEquipo', 'descripcionFallo'];
     //
     public function empleado(){
         return $this->belongsTo('App\Empleado','empleado_id')

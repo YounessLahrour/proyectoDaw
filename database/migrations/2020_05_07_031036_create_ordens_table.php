@@ -22,7 +22,7 @@ class CreateOrdensTable extends Migration
             $table->string('marcaEquipo');
             $table->string('modeloEquipo');
             $table->string('descripcionFallo');
-            $table->float('pvp', 8,2)->default('120');
+            $table->float('pvp', 8,2);
             $table->string('notificacion')->default('Pendiente');
             $table->timestamps();
             //creamos las foreign keys hay dos cliente_id y empleado_id
