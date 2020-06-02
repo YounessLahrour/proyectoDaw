@@ -29,6 +29,7 @@ Route::get('/offline', function () {
 Auth::routes();
 //ruta para notificaciones personalizada a todos los cliente
 Route::get('/notificaciones', 'EmpleadoController@notificaciones')->name('notificacion');
+Route::get('notificar', 'OrdenController@fnotificar')->name('fnotificar');
 //ruta para cargar la vista de Inicio
 Route::get('/home', 'HomeController@index')->name('home');
 //ruta para los empleados inactivos
@@ -44,3 +45,4 @@ Route::get('/message/{id}', 'MessageController@getMessage')->name('message');
 Route::post('message', 'MessageController@sendMessage');
 //ruta para notificar
 Route::post('ordenes1','OrdenController@notificar')->name('ordenes.notificar');
+Route::post('ordenes2','OrdenController@notificarAll')->name('ordenes.notificarAll');

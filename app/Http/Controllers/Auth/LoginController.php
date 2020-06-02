@@ -48,6 +48,7 @@ class LoginController extends Controller
     ]);
 
     if(Auth::attempt($credentials)){
+        //compruebo si la cuenta del usuario está activa
         if(Auth::user()->active == '1'){
             return redirect(RouteServiceProvider::HOME);
         }

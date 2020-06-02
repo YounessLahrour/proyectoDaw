@@ -4,8 +4,11 @@
     Notificaciones
 @endsection
 @section('contenido')
-
+@if ($texto=Session::get('mensaje'))
+<p class="alert alert-success my-3">{{$texto}}</p>
+@endif
 <div>
+  <a href="{{route('fnotificar')}}" class="btn btn-success mt-2">Notificar Clientes</a>
   <h1 class="text-center mt-2">Clientes notificados</h1>
     <table class="table table-dark mt-2">
         <thead>

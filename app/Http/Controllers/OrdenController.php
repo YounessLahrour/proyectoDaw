@@ -10,6 +10,8 @@ use App\Http\Requests\OrdenRequest;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\EmergencyCallReceived;
+use App\Mail\NotificacionClientes;
+
 
 class OrdenController extends Controller
 {
@@ -103,14 +105,22 @@ class OrdenController extends Controller
         //
         return view('ordenes.detalles', compact('ordene'));
     }
-/*
-    public function fnotificar(Orden $ordene)
-    {
-        $cliente = Cliente::find($ordene->cliente_id);
-        $empleado = Empleado::find($ordene->empleado_id);
 
-        return view('ordenes.notificar', compact('cliente', 'empleado', 'ordene'));
-    }*/
+    public function fnotificar()
+    {
+       // $cliente = Cliente::find($ordene->cliente_id);
+       // $empleado = Empleado::find($ordene->empleado_id);
+
+        return view('ordenes.notificar');
+    }
+
+    public function notificarAll(Request $request){
+        $clientes=Cliente::all();
+        foreach($clientes as $cliente){
+            Mail::to($cliente->email)->send(new NotificacionClientes($cliente, $request->mensaje));
+        }
+        return redirect()->route('notificacion')->with('mensaje', 'Clientes notificados con éxito');
+    }
 
     public function notificar(Request $request)
     {

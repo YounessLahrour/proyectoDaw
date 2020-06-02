@@ -91,7 +91,7 @@ class RegisterController extends Controller
             $nombre = 'users/' . time() . ' ' . $file->getClientOriginalName();
             //guardo ek archivo imagen
             Storage::disk('public')->put($nombre, \File::get($file));
-            //le damos a alumno un nombre que le hemos puesto al fichero
+            //le damos a empleado un nombre que le hemos puesto al fichero
             $nombre1 = 'empleados/' . time() . ' ' . $file->getClientOriginalName();
             //guardo ek archivo imagen
             Storage::disk('public')->put($nombre1, \File::get($file));

@@ -276,7 +276,7 @@
             });
 
             // Enable pusher logging - don't include this in production
-            Pusher.logToConsole = true;
+           // Pusher.logToConsole = true;
 
             var pusher = new Pusher('fbab854e1a8d8bf41d42', {
                 cluster: 'ap2'
@@ -289,10 +289,10 @@
                     $('#' + data.to).click();
                 } else if (my_id == data.to) {
                     if (receptor_id == data.from) {
-                        // if receiver is selected, reload the selected user ...
+                        //si el receptor es seleccionado recargo al usuario seleccionado
                         $('#' + data.from).click();
                     } else {
-                        // if receiver is not seleted, add notification for that user
+                        //si el receptor no esta seleccionado, añado una notificación al usuaio.
                         var pending = parseInt($('#' + data.from).find('.pending').html());
 
                         if (pending) {
@@ -348,7 +348,7 @@
             });
         });
 
-        // make a function to scroll down auto
+        // hago que cada vez que salte el evento haga scroll abajo
         function scrollToBottomFunc() {
             $('.message-wrapper').animate({
                 scrollTop: $('.message-wrapper').get(0).scrollHeight

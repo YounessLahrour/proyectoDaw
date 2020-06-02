@@ -21,7 +21,7 @@
                                     </div>
                                 </div>
 
-                                {{--will show unread count notification--}}
+                                {{--mensajes sin leer--}}
                                 @if($user->unread)
                                     <span class="pending ml-3">{{ $user->unread }}</span>
                                 @endif

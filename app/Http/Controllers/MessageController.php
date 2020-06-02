@@ -40,10 +40,10 @@ class MessageController extends Controller
     {
         $my_id = Auth::id();
 
-        // Make read all unread message
+        // modificar los mensajes no leidos a leidos
         Message::where(['from' => $user_id, 'to' => $my_id])->update(['is_read' => 1]);
 
-        // Get all message from selected user
+        // sacar todos los mensajes del usuario seleccionado
         $messages = Message::where(function ($query) use ($user_id, $my_id) {
             $query->where('from', $user_id)->where('to', $my_id);
         })->oRwhere(function ($query) use ($user_id, $my_id) {
@@ -80,7 +80,7 @@ class MessageController extends Controller
             $options
         );
 
-        $data = ['from' => $from, 'to' => $to]; // sending from and to user id when pressed enter
+        $data = ['from' => $from, 'to' => $to]; // se envia el evento cada vez que el usuario pulsa Enter
         $pusher->trigger('my-channel', 'my-event', $data);
     }
 
