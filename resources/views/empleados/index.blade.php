@@ -43,7 +43,7 @@
     DNI-NIE:
       <input type="text" name="dni" placeholder="DNI-NIE"  class="form-control ml-1">
     </form>
-    
+    <div class="table-responsive ml-1">
     <table class="table table-dark">
         <thead>
           <tr>
@@ -81,6 +81,7 @@
           
         </tbody>
       </table>
+      </div>
 </div>
 @section('footer')
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

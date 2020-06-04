@@ -9,11 +9,13 @@ Ordenes
 @if ($texto=Session::get('mensaje'))
 <p class="alert alert-success my-3">{{$texto}}</p>
 @endif
-<div>
-  <form name="search" action="{{route('ordenes.index')}}" method="GET" class="form-inline float-right mb-3 mt-2">
-    <i class="fa fa-search ml-2 mr-2" aria-hidden="true"></i>
+<div >
+<a href="{{route('ordenes.create')}}" class="btn btn-success mb-2 mt-2"><i class="lnr lnr-plus-circle"></i> Nueva Orden</a>
+  <form name="search" action="{{route('ordenes.index')}}" method="GET" class="form-inline float-right  mb-3 mt-2">
+    
+  <i class="fa fa-search ml-2 mr-2" aria-hidden="true"></i>
     Empleado:
-    <select name="empleado_id" onchange="this.form.submit()" class="form-control ml-2 mr-2">
+    <select name="empleado_id" onchange="this.form.submit()" class="form-control input-sm ml-2 mr-2">
       <option value="%">Todos...</option>
       @foreach ($empleados as $item)
       @if ($item->id== $request->empleado_id)
@@ -24,7 +26,7 @@ Ordenes
       @endforeach
     </select>
     Estado:
-    <select class="form-control ml-2 mr-2" name="estado" onchange="this.form.submit()">
+    <select class="form-control input-sm ml-2 mr-2" name="estado" onchange="this.form.submit()">
       @if($request->estado=="%")
       <option value="%" selected>...</option>
       @else
@@ -50,8 +52,8 @@ Ordenes
     <input type="text" name="serial" placeholder="Número de Serial" class="form-control ml-2">
   </form>
 
-  <a href="{{route('ordenes.create')}}" class="btn btn-success mb-2 mt-2"><i class="lnr lnr-plus-circle"></i> Nueva Orden</a>
-
+  
+<div class="table-responsive ml-1">
   <table class="table table-dark">
     <thead>
       <tr>
@@ -70,12 +72,12 @@ Ordenes
         <th scope="row">
           <a href="{{route('ordenes.show', $ordene)}}" style="text-decoration:none"><i class="fa-2x fa fa-address-card"></i></a>
         </th>
-        <td>{{$ordene->nombreEmpleado($ordene->empleado_id)}}</td>
-        <td>{{$ordene->nombreCliente($ordene->cliente_id)}}</td>
-        <td>{{$ordene->serialOrden}}</td>
-        <td>{{$ordene->estadoOrden}}</td>
-        <td>{{$ordene->notificacion}}</td>
-        <td id="for">
+        <td scope="col">{{$ordene->nombreEmpleado($ordene->empleado_id)}}</td>
+        <td scope="col">{{$ordene->nombreCliente($ordene->cliente_id)}}</td>
+        <td scope="col">{{$ordene->serialOrden}}</td>
+        <td scope="col">{{$ordene->estadoOrden}}</td>
+        <td scope="col">{{$ordene->notificacion}}</td>
+        <td scope="col" id="for">
 
           <form action="{{route('ordenes.destroy', $ordene)}}" method="POST">
             @csrf
@@ -105,6 +107,7 @@ Ordenes
 
     </tbody>
   </table>
+  </div>
 </div>
 @section('footer')
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

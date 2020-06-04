@@ -69,6 +69,7 @@
 
         .user-wrapper {
             height: 600px;
+            width: 325px;
 
         }
 

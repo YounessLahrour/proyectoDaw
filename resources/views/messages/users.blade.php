@@ -3,7 +3,7 @@
 @section('contenido')
     <div class="container-fluid ml-4 mt-4">
         <div class="row ml-4">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="user-wrapper">
                     <ul class="users ">
                         <li class="text-center text-white bg-dark font-weight-bold">Usuarios Disponibles</li>
@@ -32,7 +32,7 @@
                 </div>
             </div>
 
-            <div class="col-md-8" id="messages">
+            <div class="col-md-5" id="messages">
 
             </div>
         </div>
