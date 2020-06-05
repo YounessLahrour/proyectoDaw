@@ -28,7 +28,7 @@
       </div>
 
       <div class="col-md-4 mb-4 ml-2">
-        <label for="validationDefaultUsername">E-mail: <b>{{$cliente->mail}}</b></label>
+        <label for="validationDefaultUsername">E-mail: <b>{{$cliente->email}}</b></label>
       </div>
     </div>
     

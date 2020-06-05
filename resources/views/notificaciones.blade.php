@@ -10,6 +10,7 @@
 <div>
   <a href="{{route('fnotificar')}}" class="btn btn-success mt-2">Notificar Clientes</a>
   <h1 class="text-center mt-2">Clientes notificados</h1>
+  <div class="table-responsive ml-1">
     <table class="table table-dark mt-2">
         <thead>
           <tr>
@@ -38,6 +39,7 @@
           
         </tbody>
       </table>
+  </div>
 </div>
 
 

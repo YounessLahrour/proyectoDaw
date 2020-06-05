@@ -78,10 +78,10 @@
 
     <span class="lnr lnr-menu background:red"></span>
     <div class="main_content">
-      <div class="header ">
-
-        <div class="box ">{{ Auth::user()->name }}, {{ Auth::user()->apellido }} <img src="{{asset(Auth::user()->avatar)}}" width="50px" height="50px" class="rounded-circle"></div>
+      <div class="header d-flex justify-content-between">
         <div class="box first">YuniTic S.L</div>
+        <div class="box ">{{ Auth::user()->name }}, {{ Auth::user()->apellido }} <img src="{{asset(Auth::user()->avatar)}}" width="50px" height="50px" class="rounded-circle"></div>
+        
       </div>
       @endguest
       <div class="info">

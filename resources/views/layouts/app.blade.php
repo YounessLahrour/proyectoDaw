@@ -31,7 +31,18 @@
     <!-- PWA assets-->
     @laravelPWA
     <style>
-        A:link {text-decoration:none;} A:visited {text-decoration:none;} A:active {text-decoration:none;}
+        A:link {
+            text-decoration: none;
+        }
+
+        A:visited {
+            text-decoration: none;
+        }
+
+        A:active {
+            text-decoration: none;
+        }
+
         /* width */
         ::-webkit-scrollbar {
             width: 7px;
@@ -68,7 +79,7 @@
         }
 
         .user-wrapper {
-            height: 600px;
+            height: 467px;
             width: 325px;
 
         }
@@ -121,7 +132,7 @@
 
         .message-wrapper {
             padding: 10px;
-            height: 536px;
+            height: 400px;
             background: #eeeeee;
         }
 
@@ -142,7 +153,7 @@
 
         .received {
             background: #ffffff;
-            color:#717171;
+            color: #717171;
         }
 
         .sent {
@@ -157,7 +168,7 @@
         }
 
         .date {
-            
+
             font-size: 12px;
         }
 
@@ -245,10 +256,10 @@
 
         <span class="lnr lnr-menu background:red"></span>
         <div class="main_content">
-            <div class="header ">
-
-                <div class="box ">{{ Auth::user()->name }}, {{ Auth::user()->apellido }} <img src="{{asset(Auth::user()->avatar)}}" width="50px" height="50px" class="rounded-circle"></div>
+            <div class="header d-flex justify-content-between">
                 <div class="box first">YuniTic S.L</div>
+                <div class="box ">{{ Auth::user()->name }}, {{ Auth::user()->apellido }} <img src="{{asset(Auth::user()->avatar)}}" width="50px" height="50px" class="rounded-circle"></div>
+
             </div>
             <div class="info">
 
@@ -264,8 +275,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script>
-
-        
         var receptor_id = '';
         var my_id = "{{ Auth::id() }}";
         $(document).ready(function() {
@@ -277,7 +286,7 @@
             });
 
             // Enable pusher logging - don't include this in production
-           // Pusher.logToConsole = true;
+            // Pusher.logToConsole = true;
 
             var pusher = new Pusher('fbab854e1a8d8bf41d42', {
                 cluster: 'ap2'
@@ -309,11 +318,15 @@
                 $('.user').removeClass('active');
                 $(this).addClass('active');
                 $(this).find('.pending').remove();
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    $('.moverchat').hide();
+                    $('.lnr-arrow-left-circle').removeAttr('hidden');
+                }
 
                 receptor_id = $(this).attr('id');
                 $.ajax({
                     type: "get",
-                    url: "message/" + receptor_id, 
+                    url: "message/" + receptor_id,
                     data: "",
                     cache: false,
                     success: function(data) {
@@ -322,7 +335,7 @@
                     }
                 });
             });
-            
+
 
             $(document).on('keyup', '.input-text input', function(e) {
                 var message = $(this).val();
@@ -334,7 +347,7 @@
                     var datastr = "receptor_id=" + receptor_id + "&message=" + message;
                     $.ajax({
                         type: "post",
-                        url: "message", 
+                        url: "message",
                         data: datastr,
                         cache: false,
                         success: function(data) {
@@ -355,6 +368,8 @@
                 scrollTop: $('.message-wrapper').get(0).scrollHeight
             }, 50);
         }
+
+       
     </script>
 
 </body>
