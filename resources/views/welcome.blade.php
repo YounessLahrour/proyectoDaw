@@ -89,7 +89,7 @@
                         <div class="input-group-prepend">
 
                             <span id="glosaArchivos" style=" margin-top: 5px;">Ningún archivo seleccionado</span>
-                            <div class="input-group-text ml-2" style="padding-left: 0px;  padding-top: 0px;  padding-right: 0px;  padding-bottom: 0px;"><i id="attachment" class="lnr lnr-picture"></i></div>
+                            <div class="input-group-text ml-2" ><i id="attachment" class="lnr lnr-picture"></i></div>
                             <input id="archivo" type="file" hidden name="file[]" accept="image/*" multiple>
                         </div>
                     </div>
