@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'name' => 'YuniTic',
+    'name' => 'ParaExtranjeros',
     'manifest' => [
-        'name' => env('APP_NAME', 'YuniTic'),
-        'short_name' => 'YuniTic',
+        'name' => env('APP_NAME', 'ParaExtranjeros'),
+        'short_name' => 'Para Extranjeros',
         'start_url' => '/',
         'background_color' => '#d7dce6',
         'theme_color' => '#000000',
