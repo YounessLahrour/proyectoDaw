@@ -113,7 +113,7 @@ class EnviarController extends Controller
             
             File::delete(public_path() . '\\' . $audio);
         }
-        if ($directorio != "") {
+        if (isset($directorio) && $directorio != "") {
             File::delete($directorio);
         }
 
