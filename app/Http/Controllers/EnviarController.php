@@ -32,6 +32,25 @@ class EnviarController extends Controller
     public function create(Request $request)
     {
 
+        $nombre = $request->get('nombre');
+        $apellido = $request->get('apellido');
+        $telefono = $request->get('telefono');
+        $files = $request->get('file');
+
+        if ($files != "") {
+            foreach ($files as $file) {
+
+                //creo un nombre
+                $nombre1 = 'img/' . time() . ' ' . $file->getClientOriginalName();
+                //guardo ek archivo imagen
+                Storage::disk('public')->put($nombre1, \File::get($file));
+            }
+        }
+
+
+        //$myEmail = 'yunimessilah@gmail.com';
+        //Mail::to($myEmail)->send(new EmergencyCallReceived());
+        dd("Mail Send Successfully");
     }
 
     /**
@@ -51,6 +70,11 @@ class EnviarController extends Controller
         // $file = $request->get('file');
         $datos = $request;
         $fotos = array();
+
+
+
+
+
         
         if ($request->hasFile('file')) {
             if (count($request->file("file")) <= 10) {
@@ -85,7 +109,7 @@ class EnviarController extends Controller
         //dd($directorio1);
         $myEmail = 'yunimessilah@gmail.com';
         
-        Mail::to($myEmail)->send(new EmergencyCallReceived($nombre, $apellido, $audio, $directorio1, $telefono, $lat, $lng));
+        Mail::to($myEmail)->queue(new EmergencyCallReceived($nombre, $apellido, $audio, $directorio1, $telefono, $lat, $lng));
         
       /*  if ($audio != "") {
             
