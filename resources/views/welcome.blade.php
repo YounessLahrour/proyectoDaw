@@ -18,7 +18,7 @@
 
 </head>
 
-<body>
+<body onbeforeunload="return refrescar()">
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 
     <div class="container">

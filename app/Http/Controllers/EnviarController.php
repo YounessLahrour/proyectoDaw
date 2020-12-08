@@ -32,25 +32,6 @@ class EnviarController extends Controller
     public function create(Request $request)
     {
 
-        $nombre = $request->get('nombre');
-        $apellido = $request->get('apellido');
-        $telefono = $request->get('telefono');
-        $files = $request->get('file');
-
-        if ($files != "") {
-            foreach ($files as $file) {
-
-                //creo un nombre
-                $nombre1 = 'img/' . time() . ' ' . $file->getClientOriginalName();
-                //guardo ek archivo imagen
-                Storage::disk('public')->put($nombre1, \File::get($file));
-            }
-        }
-
-
-        //$myEmail = 'yunimessilah@gmail.com';
-        //Mail::to($myEmail)->send(new EmergencyCallReceived());
-        dd("Mail Send Successfully");
     }
 
     /**
@@ -65,14 +46,11 @@ class EnviarController extends Controller
         $apellido = ucfirst(trim($request->get('apellido')));
         $telefono = $request->get('telefono');
         $audio = $request->get('audio');
+        $lat=$request->get('lat');
+        $lng=$request->get('lng');
         // $file = $request->get('file');
         $datos = $request;
         $fotos = array();
-
-
-
-
-
         
         if ($request->hasFile('file')) {
             if (count($request->file("file")) <= 10) {
@@ -107,15 +85,15 @@ class EnviarController extends Controller
         //dd($directorio1);
         $myEmail = 'yunimessilah@gmail.com';
         
-        Mail::to($myEmail)->send(new EmergencyCallReceived($datos, $directorio1));
+        Mail::to($myEmail)->send(new EmergencyCallReceived($nombre, $apellido, $audio, $directorio1, $telefono, $lat, $lng));
         
-        if ($audio != "") {
+      /*  if ($audio != "") {
             
             File::delete(public_path() . '\\' . $audio);
         }
         if (isset($directorio) && $directorio != "") {
             File::delete($directorio);
-        }
+        }*/
 
 
         return redirect()->route('welcome')->with('mensaje', 'Hemos recibido tu consulta correctamente, pronto nos pondremos en contacto con usted.');

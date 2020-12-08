@@ -18,24 +18,24 @@ class EmergencyCallReceived extends Mailable
     public $audio;
     public $lat;
     public $lng;
-    public $files;
+    //public $files;
     public $directorio;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($datos, $directorio)
+    public function __construct($datos, $directorio, $audio, $directorio1, $telefono, $lat, $lng)
     {
         
-        $this->nombre = $datos->get('nombre');
-        $this->apellido = $datos->get('apellido');
-        $this->telefono = $datos->get('telefono');
-        $this->audio = $datos->get('audio');
-        $this->lat = $datos->get('lat');
-        $this->lng = $datos->get('lng');
-        $this->files = $datos;
-        $this->directorio = $directorio;
+        $this->nombre = $datos;
+        $this->apellido = $directorio;
+        $this->telefono = $telefono;
+        $this->audio = $audio;
+        $this->lat = $lat;
+       $this->lng = $lng;
+        //$this->files = $datos;
+        $this->directorio = $directorio1;
     }
 
     /**
@@ -52,6 +52,7 @@ class EmergencyCallReceived extends Mailable
                 'as' => 'audio'.ucfirst($this->nombre).'.webm',
                 'mime' => 'application/mp3',
             ]);
+            File::delete(public_path($this->audio));
         }
         
         $directorio = $this->directorio;
@@ -60,6 +61,7 @@ class EmergencyCallReceived extends Mailable
             'mime' => 'application/pdf',
         ]);
         }
+     //   unlink($directorio);
 
         return $email;
     }
