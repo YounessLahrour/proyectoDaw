@@ -7,7 +7,6 @@ $host=$dbopts['host'] ?? null;
 $username=$dbopts['user']?? null;
 $password=$dbopts['pass']?? null;
 $database=substr($dbopts['path'], 1)?? null;
-
 return [
 
     /*
@@ -21,7 +20,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql_production'),
 
     /*
     |--------------------------------------------------------------------------
