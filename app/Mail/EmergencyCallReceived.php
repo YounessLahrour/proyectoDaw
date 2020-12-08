@@ -52,7 +52,7 @@ class EmergencyCallReceived extends Mailable
                 'as' => 'audio'.ucfirst($this->nombre).'.webm',
                 'mime' => 'application/mp3',
             ]);
-            File::delete(public_path($this->audio));
+            //File::delete(public_path($this->audio));
         }
         
         $directorio = $this->directorio;
