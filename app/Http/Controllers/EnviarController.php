@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Mail\EmergencyCallReceived;
 use File;
 use PDF;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Enviar;
 use Illuminate\Http\Request;
@@ -84,8 +85,10 @@ class EnviarController extends Controller
                 //
                 $files = $request->file("file");
                 foreach ($files as $file) {
+                   
                     $nombrearchivo  = time() . $file->getClientOriginalName();
-                    $file->move(public_path("img/"), $nombrearchivo);
+                   Image::make($file)->resize(2000,3000)->save(public_path("img/"). $nombrearchivo);
+                    // $file->move(public_path("img/"), $nombrearchivo);
                     array_push($fotos, $nombrearchivo);
                 }
                 $directorio1 = $directorio . '\\' . $nombre . '_' . $apellido . '.pdf';
