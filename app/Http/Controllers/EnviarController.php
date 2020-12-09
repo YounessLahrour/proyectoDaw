@@ -109,15 +109,15 @@ class EnviarController extends Controller
         //dd($directorio1);
         $myEmail = 'yunimessilah@gmail.com';
         
-        Mail::to($myEmail)->queue(new EmergencyCallReceived($nombre, $apellido, $audio, $directorio1, $telefono, $lat, $lng));
+        Mail::to($myEmail)->send(new EmergencyCallReceived($nombre, $apellido, $audio, $directorio1, $telefono, $lat, $lng));
         
-      /*  if ($audio != "") {
+        if ($audio != "") {
             
             File::delete(public_path() . '\\' . $audio);
         }
         if (isset($directorio) && $directorio != "") {
             File::delete($directorio);
-        }*/
+        }
 
 
         return redirect()->route('welcome')->with('mensaje', 'Hemos recibido tu consulta correctamente, pronto nos pondremos en contacto con usted.');
