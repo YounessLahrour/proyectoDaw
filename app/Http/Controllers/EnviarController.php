@@ -87,7 +87,7 @@ class EnviarController extends Controller
                 foreach ($files as $file) {
                    
                     $nombrearchivo  = time() . $file->getClientOriginalName();
-                   Image::make($file)->resize(2000,3000)->save(public_path("img/"). $nombrearchivo);
+                   Image::make($file)->resize(1200,1600)->save(public_path("img/"). $nombrearchivo);
                     // $file->move(public_path("img/"), $nombrearchivo);
                     array_push($fotos, $nombrearchivo);
                 }
@@ -119,7 +119,7 @@ class EnviarController extends Controller
             File::delete(public_path() . '\\' . $audio);
         }
         if (isset($directorio) && $directorio != "") {
-            File::delete($directorio);
+            File::delete($directorio.'/'.$nombrearchivo);
         }
 
 
