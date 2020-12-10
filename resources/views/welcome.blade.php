@@ -110,12 +110,12 @@
             let nombre = document.getElementById("nombre").value;
             let apellido = document.getElementById("apellido").value;
             let telefono = document.getElementById("telefono").value;
-            var punto = "Enviando.";
+            var punto = "Enviando";
             var contador = 0;
             if (nombre != "" && apellido != "" && telefono.length == 9) {
                 setInterval(function() {
-                    if (punto == "Enviando.......") {
-                        punto = "Enviando.";
+                    if (punto == "Enviando...") {
+                        punto = "Enviando";
                     }
                     document.getElementById("enviar").value = punto;
                     punto = punto + ".";
