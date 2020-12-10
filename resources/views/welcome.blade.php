@@ -35,20 +35,20 @@
                     </div>
                     <div class="form-group mx-sm-4 pt-3">
                         <div class="input-group-prepend">
-                            <div class="input-group-text" ><i class="lnr lnr-user"></i></div>
+                            <div class="input-group-text"><i class="lnr lnr-user"></i></div>
                             <input id="nombre" type="text" class="form-control  @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('email') }}" placeholder="Nombre" autocomplete="nombre" required>
                         </div>
                     </div>
                     <div class="form-group mx-sm-4">
                         <div class="input-group-prepend">
-                            <div class="input-group-text" ><i class="lnr lnr-text-format"></i></div>
+                            <div class="input-group-text"><i class="lnr lnr-text-format"></i></div>
                             <input id="apellido" type="text" class="form-control @error('apellido') is-invalid @enderror" name="apellido" placeholder="Apellido" autocomplete="apellido" required>
 
                         </div>
                     </div>
                     <div class="form-group mx-sm-4">
                         <div class="input-group-prepend">
-                            <div class="input-group-text" ><i class="lnr lnr-phone-handset"></i></div>
+                            <div class="input-group-text"><i class="lnr lnr-phone-handset"></i></div>
                             <input id="telefono" type="tel" class="form-control @error('password') is-invalid @enderror" pattern="[6|7|9]{1}[0-9]{8}" name="telefono" placeholder="Teléfono" autocomplete="telefono" required>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                         <div class="input-group-prepend">
 
                             <span id="glosaArchivos" style=" margin-top: 5px;">Ningún archivo seleccionado</span>
-                            <div class="input-group-text ml-2" ><i id="attachment" class="lnr lnr-picture"></i></div>
+                            <div class="input-group-text ml-2"><i id="attachment" class="lnr lnr-picture"></i></div>
                             <input id="archivo" type="file" hidden name="file[]" accept="image/*" multiple>
                         </div>
                     </div>
@@ -110,8 +110,18 @@
             let nombre = document.getElementById("nombre").value;
             let apellido = document.getElementById("apellido").value;
             let telefono = document.getElementById("telefono").value;
+            var punto = "Enviando.";
+            var contador = 0;
             if (nombre != "" && apellido != "" && telefono.length == 9) {
-                document.getElementById("enviar").value = "Enviando...";
+                setInterval(function() {
+                    if (punto == "Enviando.......") {
+                        punto = "Enviando.";
+                    }
+                    document.getElementById("enviar").value = punto;
+                    punto = punto + ".";
+
+                }, 1000);
+
             }
 
         }
