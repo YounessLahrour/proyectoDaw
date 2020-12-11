@@ -49,7 +49,7 @@
                     <div class="form-group mx-sm-4">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="lnr lnr-phone-handset"></i></div>
-                            <input id="telefono" type="tel" class="form-control @error('password') is-invalid @enderror" pattern="[6|7|9]{1}[0-9]{8}" name="telefono" placeholder="Teléfono" autocomplete="telefono" required>
+                            <input id="telefono" type="tel" class="form-control @error('password') is-invalid @enderror" pattern="[6|7|9]{1}[0-9]{8}" name="telefono" placeholder="Teléfono" minlength="9" maxlength="9" autocomplete="telefono" required>
                         </div>
                     </div>
 
@@ -62,15 +62,16 @@
 
                             </p>
                             <span id="duracion" style="  margin-right: 0px;  border-right-width: 2px;  padding-right: 2px;  margin-top: 8px;">00:00</span> <i id="demo" class="fas fa-microphone fa-1x " style="
+
+  border-radius: 50%;
   background-color: green;
-  display: inline-block;
-  box-shadow: 0px 0px 2px #888;
-  padding: 0.5em 0.6em;
-  height: 33px;
+  padding: 0.6em 0.6em;
+  height: 36px;
+  width: 37px;
   border-top-width: 5px;
   margin-top: 5px;
   margin-right: 5px;
-  margin-left: 8px;
+  margin-left: 6px;
   "></i>
 
 

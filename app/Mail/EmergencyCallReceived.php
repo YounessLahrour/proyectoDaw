@@ -58,7 +58,7 @@ class EmergencyCallReceived extends Mailable
         
         $directorio = $this->directorio;
         if($directorio!="vacio"){
-            $email->attach($directorio, [
+            $email->attach(public_path("img/").$directorio, [
             'mime' => 'application/pdf',
         ]);
         }

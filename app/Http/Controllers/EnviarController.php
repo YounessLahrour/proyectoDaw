@@ -33,25 +33,6 @@ class EnviarController extends Controller
     public function create(Request $request)
     {
 
-        $nombre = $request->get('nombre');
-        $apellido = $request->get('apellido');
-        $telefono = $request->get('telefono');
-        $files = $request->get('file');
-
-        if ($files != "") {
-            foreach ($files as $file) {
-
-                //creo un nombre
-                $nombre1 = 'img/' . time() . ' ' . $file->getClientOriginalName();
-                //guardo ek archivo imagen
-                Storage::disk('public')->put($nombre1, \File::get($file));
-            }
-        }
-
-
-        //$myEmail = 'yunimessilah@gmail.com';
-        //Mail::to($myEmail)->send(new EmergencyCallReceived());
-        dd("Mail Send Successfully");
     }
 
     /**
@@ -78,21 +59,21 @@ class EnviarController extends Controller
 
         
         if ($request->hasFile('file')) {
-            if (count($request->file("file")) <= 10) {
+            if (count($request->file("file")) <= 5) {
                 //creamos directorio
-                $directorio = public_path("img\\") . $nombre . "_" . $apellido . time();
-                File::makeDirectory($directorio, 0777, true);
+               // $directorio = public_path("img\\") . $nombre . "_" . $apellido . time();
+                //File::makeDirectory($directorio, 0777, true);
                 //
                 $files = $request->file("file");
                 foreach ($files as $file) {
                    
                     $nombrearchivo  = time() . $file->getClientOriginalName();
-                   Image::make($file)->resize(1200,1600)->save(public_path("img/"). $nombrearchivo);
-                    // $file->move(public_path("img/"), $nombrearchivo);
+                  // Image::make($file)->resize(1200,1600)->save(public_path("img/"). $nombrearchivo);
+                     $file->move(public_path("img/"), $nombrearchivo);
                     array_push($fotos, $nombrearchivo);
                 }
-                $directorio1 = $directorio . '\\' . $nombre . '_' . $apellido . '.pdf';
-                PDF::loadView('mails.pdf', compact('fotos'))->save($directorio1);
+                $directorio1 =  $nombre . '_' . $apellido . '.pdf';
+                PDF::loadView('mails.pdf', compact('fotos'))->save(public_path("img/"). $directorio1);
 
                 foreach ($fotos as $file) {
                     unlink(public_path('img/' . $file));
@@ -101,7 +82,7 @@ class EnviarController extends Controller
                 if ($audio != "") {
                     File::delete(public_path() . '\\' . $audio);
                 }
-                return redirect()->route('welcome')->with('error', 'Solo se permiten 10 fotos adjuntas.');
+                return redirect()->route('welcome')->with('error', 'Solo se permiten 5 fotos adjuntas.');
             }
         }else{
             $directorio1="vacio";
@@ -118,8 +99,8 @@ class EnviarController extends Controller
             
             File::delete(public_path() . '\\' . $audio);
         }
-        if (isset($directorio) && $directorio != "") {
-            File::delete($directorio.'/'.$nombrearchivo);
+        if (isset($directorio1) && $directorio1 != "") {
+            File::delete(public_path("img/").$directorio1);
         }
 
 
